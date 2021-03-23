@@ -1,0 +1,46 @@
+
+.container{
+ height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box{
+    width: 50%;
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    box-shadow: 0 4px 8px 1px rgba(0,0,0, 0.357);
+
+}
+ul.tabs-select{
+    display: flex;
+    justify-content: space-around;
+}
+.tab-select-item{
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+ul.tasks-list, ul.tabs-select{
+    list-style-type: none ;
+    margin: 0;
+    padding: 0;
+}
+
+.tasks-list li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.tasks-list li:not(:last-child){
+    border-bottom: 1px solid #ccc;
+}
+
+.task-delete{
+    text-decoration: line-through;
+    color:grey}
+
+.svg-inline--fa{
+    cursor: pointer;
+}
