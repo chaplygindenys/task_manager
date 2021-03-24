@@ -8,7 +8,7 @@ import {faTrash} from "@fortawesome/free-solid-svg-icons";
 let initTasks = [
     {id: 1, title: "Open your eyes", done: true, delete: true},
     {id: 2, title: "Check smartphone", done: true, delete: false},
-    {id: 3, title: "Brush your teeth", done: false, delete: true}
+    {id: 3, title: "Brush your teeth", done: false, delete: false}
 ];
 
 const Index = () => {
@@ -29,7 +29,8 @@ const Index = () => {
 
     const addNewTask = () => {
         setTasks([
-            ...tasks, {id: tasks.length + 1, title: newTask, done: false}  //es6 конкотенация в конекц  ...старх,
+            ...tasks,
+            {id: tasks.length + 1, title: newTask, done: false}  //es6 конкотенация в конекц  ...старх,
         ]);
         //todo clear input
 
@@ -37,9 +38,21 @@ const Index = () => {
     }
 
 
+
+
     return (
         <>
             < div className={'container'}>
+                <div className="box">
+                    <ul className="tabs-select">
+                        <li className="tab-select-item" onClick={()=>setTasks(initTasks)}>All</li>
+                        <li className="tab-select-item" onClick={()=>{setTasks(initTasks.filter(el => !el.done && !el.delete))}}>ToDo</li>
+                        <li className="tab-select-item" onClick={()=>{setTasks(initTasks.filter(el => el.done && !el.delete))}}>Done</li>
+                        <li className="tab-select-item" onClick={()=>{setTasks(initTasks.filter(el => el.delete))}}>Delete</li>
+                    </ul>
+                </div>
+
+
                 <div className={'box'}>
                     <input type="text" value={newTask} onChange={enterNewTask}/>
                     <button onClick={addNewTask}>Add new task</button>
