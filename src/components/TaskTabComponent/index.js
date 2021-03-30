@@ -17,7 +17,11 @@ const TasksTabWrapper = styled.div`
     }
 `;
 
-const TsakTabComponent =(tabTitle, tabDescription, tasks)=>(
+const TaskTabComponent =(
+    {tabTitle,
+        tabDescription,
+        tasks}
+        )=>(
     <TasksTabWrapper>
         <div className="title__wrapper">
             <div className="title">{tabTitle}</div>
@@ -26,4 +30,4 @@ const TsakTabComponent =(tabTitle, tabDescription, tasks)=>(
         <div className="task__counter">{tasks.length}</div>
     </TasksTabWrapper>
 );
-export default TsakTabComponent;
+export default TaskTabComponent;

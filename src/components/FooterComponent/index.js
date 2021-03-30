@@ -49,7 +49,7 @@ const Footer = styled.div`position: sticky;
     padding: 0px 20px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    box-shadow: 0px -4px 6px 0px rgba(0, 0, 0, 0.125);
+    box-shadow: 0px -4px 6px 0px ${props => props.taskFormShadowColor};
     display: flex;
     flex-direction: column;
     transition: height 1s;
@@ -87,7 +87,8 @@ const FooterComponent = ({addFormOpen, setAddFormOpen, newTask, enterNewTask, ke
             addButtonWrapperBgColor = '#000'
             hrBgColor = '#fff'
             addTaskFormWrapperBgColor = '#fff'
-            inputUnderLineColor = '#ccc'>
+            inputUnderLineColor = '#ccc'
+            taskFormShadowColor = 'rgba(0, 0, 0, 0.125)'>
             <div className="add__button__wrapper" onClick={() => setAddFormOpen(!addFormOpen)}>
                 <span className="hr"></span>
                 <span className={`hr ${addFormOpen === true ? '' : 'vr'}`}></span>

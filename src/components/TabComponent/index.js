@@ -1,43 +1,27 @@
 import React from "react";
+import styled from "styled-components";
+import TasksListComponent from "../TasksListComponent";
+import TaskTabComponent from "../TaskTabComponent"
 
-import TaskElementComponent from "../TaskElementComponent"
-import styled, {keyframes} from "styled-components";
-
-const hide =(h)=> keyframes`
-   0%{
- 
-    height: ${h}px;
-  }
-  100%{
-
-
-    height: 0;
-  }
-`;
-
-const show =(h)=> keyframes`
-  0%{
-  
-    height: 0;
-  }
-  100%{
- 
-    height: ${h}px;
-  }
-`;
-
-
-const TaskListWrapper = styled.div `
-    margin: 10px 0;
-    //display: none;
-    animation:${props => hide(props.taskListHeight)} 1s;
-    animation-fill-mode: forwards;
-    overflow: hidden;
-  
+const TabWrapper = styled.div`
+    margin: 8px 0;
+    min-height: 90px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: ${props => props.tabWraperBgColor};
+    box-shadow: 0px 2px 6px 0px ${props => props.tabWraperShadowColor};
+    cursor: pointer;
+    transition: transform .3s;
     &.active{
-      //display: block;
-      animation:${props => show(props.taskListHeight)} 1s;
-      animation-fill-mode: forwards;
+      cursor: default;
+    }
+
+    &:hover:not(.active){
+      transform: scale(1.04);
     }
 `;
 
@@ -46,42 +30,28 @@ const TabComponent = (
         tasks, setActiveTab, changeTaskStatus,
         changeTaskStatusDelete, activeTab, nameTab, tabTitle,
         tabDescription, taskListHeight
-    }) => {
+    }) => (
+    <TabWrapper className={(activeTab === nameTab) ? 'active' : ''}
+                onClick={() => setActiveTab(nameTab)}
+                tabWraperBgColor={'#fff'}
+                tabWraperShadowColor={'rgba(0, 0, 0, 0.125)'}
+    >
+        <TaskTabComponent
+           tabTitle={tabTitle}
+           tabDescription={tabDescription}
+           tasks={tasks}
+           setActiveTab={setActiveTab}
+           nameTab={nameTab}
+        />
 
-         console.log(nameTab, taskListHeight)
-
-
-    return (
-        <div className={`tasks  ${(activeTab === nameTab)? 'active' : ''}`}
-             onClick={() => setActiveTab(nameTab)}>
-            <div className="tasks__tab__wrapper">
-                <div className="title__wrapper">
-                    <div className="title">{tabTitle}</div>
-                    <div className="description">{tabDescription}</div>
-                </div>
-                <div className="task__counter">{tasks.length}</div>
-            </div>
-
-            <TaskListWrapper className={(activeTab === nameTab) ? 'active' : ''}
-                             taskListHeight={taskListHeight}>
-                <ul className="tasks__list">
-                    {tasks.map(el => {
-
-                        const cssClass = el.delete ? 'removed' : el.done ? 'done' : '';
-
-                        return (
-                        <TaskElementComponent
-                            changeTaskStatusDelete={changeTaskStatusDelete}
-                            changeTaskStatus={changeTaskStatus}
-                            el={el}
-                            cssClass={cssClass}
-                        />
-                        )
-                    })
-                    }
-                </ul>
-            </TaskListWrapper>
-        </div>
-    );
-}
+        <TasksListComponent
+            changeTaskStatus={changeTaskStatus}
+            changeTaskStatusDelete={changeTaskStatusDelete}
+            tasks={tasks}
+            activeTab={activeTab}
+            nameTab={nameTab}
+            taskListHeight={taskListHeight}
+        />
+    </TabWrapper>
+);
 export default TabComponent;

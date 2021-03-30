@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckSquare, faSquare, faTrashAlt} from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
-/*import "./style.scss"*/
+
 
 const LiComponent = styled.li `padding: 14px 0px;
   display: flex;

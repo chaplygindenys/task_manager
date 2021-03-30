@@ -1,11 +1,19 @@
 import React from "react";
 import TabComponent from "../TabComponent";
- const taskHeight = 50;
+import styled from "styled-components";
+
+const taskHeight = 50;
+const ContentWrapper = styled.div`
+    padding: 0 20px;
+    flex: 1;
+  
+`;
+
 const ContentComponent = (
     {tasks,setActiveTab, changeTaskStatus, changeTaskStatusDelete, activeTab}
     ) =>{
     return(
-         <div className="content">
+         <ContentWrapper >
              <TabComponent
                  tasks={tasks}
                  setActiveTab={setActiveTab}
@@ -56,7 +64,7 @@ const ContentComponent = (
                  tabDescription='Here you can see the tasks that you have been removed'
                  taskListHeight={tasks.filter(el => el.delete).length * taskHeight}
              />
-    </div>
+    </ContentWrapper>
     )
 }
 export default ContentComponent;

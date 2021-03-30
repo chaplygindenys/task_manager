@@ -1,12 +1,42 @@
 import React, {useState, useEffect} from 'react';
-import './style.scss';
-
+import styled from "styled-components";
 import HeaderComponent from "../HeaderComponent";
 import FooterComponent from "../FooterComponent";
 import ContentComponent from "../ContentComponent";
 
 let initTasks = [];
 
+const Container = styled.div`
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    background: ${props => props.containerBgColor};
+   justify-content: center;
+    
+`;
+
+
+const DiviceWrapper =styled.div`
+    box-sizing: border-box;
+    height: 800px;
+    width: 375px;
+    overflow: hidden;
+    border-radius: 40px;
+    box-shadow: 2px 12px 20px 2px rgba(0, 0, 0, 0.25);
+    border: 4px solid ${props => props.deviceBorderColor};
+    .device{
+      //padding: 20px;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      background: ${props => props.deviceBgColor};
+      display: flex;
+      flex-direction: column;
+      /* overflow-y: scroll;*/
+      position: relative;
+    }
+`;
 const Index = () => {
     const [newTask, setNewTask] = useState(''); //this.state = {value: ''};
     const [tasks, setTasks] = useState(initTasks);
@@ -62,8 +92,12 @@ const Index = () => {
     }
 
     return (
-        <>
-            < div className={'device__wrapper'}>
+        <Container
+            containerBgColor='#eaeaea'>
+            <DiviceWrapper
+                deviceBorderColor='#fff'
+                deviceBgColor='#f3f3f3'
+            >
                 <div className="device">
                     <HeaderComponent/>
                     < ContentComponent
@@ -83,8 +117,8 @@ const Index = () => {
                         />
                 </div>
 
-            </div>
-        </>
+            </DiviceWrapper>
+        </Container>
     )
         ;
 }
