@@ -1,0 +1,111 @@
+.tasks{
+  margin: 8px 0;
+  min-height: 90px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.125);
+  cursor: pointer;
+  transition: transform .3s;
+  &.active{
+    cursor: default;
+  }
+
+  &:hover:not(.active){
+    transform: scale(1.04);
+  }
+  .tasks__tab__wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .title__wrapper{
+      .title{
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      .description{
+        font-weight: 100;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .tasks__list__wrapper{
+    margin: 10px 0;
+    //display: none;
+    animation: hide 1s;
+    animation-fill-mode: forwards;
+    @keyframes show {
+      0%{
+        transform: scaleY(0);
+        height: 0;
+      }
+      100%{
+        transform: scaleY(1);
+        height: 250px;
+      }
+    }
+    @keyframes hide {
+      0%{
+        transform: scaleY(1);
+        height: 250px;
+      }
+      100%{
+
+        transform: scaleY(0);
+        height: 0;
+      }
+    }
+    &.active{
+      //display: block;
+      animation: show 1s;
+      animation-fill-mode: forwards;
+    }
+    /* .tasks__list{
+         .task__element{*/
+    /* padding: 14px 0px;
+     display: flex;
+     justify-content: space-around;
+     &:not(:last-child){
+         border-bottom: 1px solid #e8e8e8;
+     }
+     &:last-child{
+         padding-bottom: 0px;
+     }
+     .task__text{
+         flex: 1;
+         margin: 0px 4px;
+     }
+     &:not(.removed),&:not(.removed),&:not(.removed){
+         .fa,.far,.fas{
+             cursor: pointer;
+         }
+     }
+     &.removed{
+         .fa,.far,.fas{
+             opacity: 0;
+         }
+         .task__text{
+             text-decoration: line-through;
+             color: #ccc;
+             font-weight: 100;
+         }
+     }
+     &.done{
+         .fa.fa-check-square,.far.fa-check-square,.fas.fa-check-square{
+             opacity: .5;
+             cursor: default;
+         }
+         .task__text{
+             color: #7d7d7d;
+             font-weight: 100;
+         }
+     }*/
+    /*  }
+  }*/
+  }
+}
