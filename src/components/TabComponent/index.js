@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TasksListComponent from "../TasksListComponent";
 import TaskTabComponent from "../TaskTabComponent"
+import TaskElementComponent from "../TaskElementComponent";
 
 const TabWrapper = styled.div`
     margin: 8px 0;
@@ -12,8 +13,8 @@ const TabWrapper = styled.div`
     justify-content: center;
     padding: 10px 20px;
     box-sizing: border-box;
-    background-color: ${props => props.tabWraperBgColor};
-    box-shadow: 0px 2px 6px 0px ${props => props.tabWraperShadowColor};
+    background-color: ${props => props.tabWrapperBgColor};
+    box-shadow: 0px 2px 6px 0px ${props => props.tabWrapperShadowColor};
     cursor: pointer;
     transition: transform .3s;
     &.active{
@@ -27,14 +28,31 @@ const TabWrapper = styled.div`
 
 const TabComponent = (
     {
-        tasks, setActiveTab, changeTaskStatus,
-        changeTaskStatusDelete, activeTab, nameTab, tabTitle,
-        tabDescription, taskListHeight
+        tasks,
+        setActiveTab,
+        changeTaskStatus,
+        changeTaskStatusDelete,
+        activeTab,
+        nameTab,
+        tabTitle,
+        tabDescription,
+        taskListHeight,
+
+        tabWrapperBgColor,
+        tabWrapperShadowColor,
+
+        liBorderBottomColor,
+        liTaskTextColor,
+        liTaskTextRemovedColor,
+        liTaskTextDoneColor
+
     }) => (
-    <TabWrapper className={(activeTab === nameTab) ? 'active' : ''}
+    <TabWrapper
+        className={(activeTab === nameTab) ? 'active' : ''}
                 onClick={() => setActiveTab(nameTab)}
-                tabWraperBgColor={'#fff'}
-                tabWraperShadowColor={'rgba(0, 0, 0, 0.125)'}
+
+                tabWrapperBgColor={tabWrapperBgColor}
+                tabWrapperShadowColor={tabWrapperShadowColor}
     >
         <TaskTabComponent
            tabTitle={tabTitle}
@@ -51,6 +69,12 @@ const TabComponent = (
             activeTab={activeTab}
             nameTab={nameTab}
             taskListHeight={taskListHeight}
+
+            liBorderBottomColor={liBorderBottomColor}
+            liTaskTextColor={liTaskTextColor}
+            liTaskTextRemovedColor={liTaskTextRemovedColor}
+            liTaskTextDoneColor={liTaskTextDoneColor}
+
         />
     </TabWrapper>
 );

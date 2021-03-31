@@ -19,7 +19,7 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderComponent = () => {
+const HeaderComponent = ({selectedThemes}) => {
 
     const date = new Date();
     let days = ['Sun', 'Mon', 'Tus', 'Wen', 'Tht', 'Fry', 'Sat']
@@ -30,7 +30,8 @@ const HeaderComponent = () => {
 
 
         <HeaderWrapper
-            deviceBorderColor={'#fff'}>
+            deviceBorderColor={selectedThemes.deviceBorderColor}
+        >
             <div className="iphone__x"></div>
             <h1>Hello, Denys</h1>
             <div className="greeting">

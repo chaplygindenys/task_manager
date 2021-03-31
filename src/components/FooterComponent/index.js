@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 /**
  * addButtonWrapperBgColor: #000;
  * hrBgColor: #fff;
@@ -16,7 +17,7 @@ const Footer = styled.div`position: sticky;
     right: 0px;
     bottom: 0px;
     transform: translate(-20%, -20%);
-    background-color: ${props=>props.addButtonWrapperBgColor};
+    background-color: ${props => props.addButtonWrapperBgColor};
     border-radius: 50%;
     cursor: pointer;
     opacity: .7;
@@ -34,7 +35,7 @@ const Footer = styled.div`position: sticky;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background-color: ${props=>props.hrBgColor};
+      background-color: ${props => props.hrBgColor};
       transition: transform 1s;
 
       &.vr {
@@ -45,7 +46,7 @@ const Footer = styled.div`position: sticky;
 
   .add__task__form__wrapper {
     height: 0px;
-    background-color: ${props=>props.addTaskFormWrapperBgColor};
+    background-color: ${props => props.addTaskFormWrapperBgColor};
     padding: 0px 20px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -62,7 +63,9 @@ const Footer = styled.div`position: sticky;
 
     input {
       border: unset;
-      border-bottom: 1px solid ${props=>props.inputUnderLineColor};
+      color:${props => props.addTaskFormWrapperTextColor};
+      background-color: ${props => props.addTaskFormWrapperBgColor};
+      border-bottom: 1px solid ${props => props.inputUnderLineColor};
       height: 20px;
 
       &:focus {
@@ -78,17 +81,36 @@ const Footer = styled.div`position: sticky;
     }
   }`
 
-const FooterComponent = ({addFormOpen, setAddFormOpen, newTask, enterNewTask, keyBoardHandler}) =>{
+const FooterComponent = (
+    {
+        addFormOpen,
+        setAddFormOpen,
+        newTask,
+        enterNewTask,
+        keyBoardHandler,
+        addButtonWrapperBgColor,
+        hrBgColor,
+        addTaskFormWrapperTextColor,
+        addTaskFormWrapperBgColor,
+        inputUnderLineColor,
+        taskFormShadowColor,
+    }
+) => {
 
-    return(
+    return (
 
         <Footer
             className={addFormOpen === true ? 'active' : ''}
-            addButtonWrapperBgColor = '#000'
-            hrBgColor = '#fff'
-            addTaskFormWrapperBgColor = '#fff'
-            inputUnderLineColor = '#ccc'
-            taskFormShadowColor = 'rgba(0, 0, 0, 0.125)'>
+
+            addButtonWrapperBgColor={addButtonWrapperBgColor}
+            hrBgColor={hrBgColor}
+            addTaskFormWrapperTextColor={addTaskFormWrapperTextColor}
+            addTaskFormWrapperBgColor={addTaskFormWrapperBgColor}
+            inputUnderLineColor={inputUnderLineColor}
+            taskFormShadowColor={taskFormShadowColor}
+        >
+
+
             <div className="add__button__wrapper" onClick={() => setAddFormOpen(!addFormOpen)}>
                 <span className="hr"></span>
                 <span className={`hr ${addFormOpen === true ? '' : 'vr'}`}></span>

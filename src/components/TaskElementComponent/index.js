@@ -4,12 +4,12 @@ import {faCheckSquare, faSquare, faTrashAlt} from "@fortawesome/free-regular-svg
 import styled from "styled-components";
 
 
-const LiComponent = styled.li `padding: 14px 0px;
+const LiComponent = styled.li`padding: 14px 0px;
   display: flex;
   justify-content: space-around;
 
   &:not(:last-child) {
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid ${props => props.liBorderBottomColor};
   }
 
   &:last-child {
@@ -19,6 +19,7 @@ const LiComponent = styled.li `padding: 14px 0px;
   .task__text {
     flex: 1;
     margin: 0px 4px;
+    color: ${props => props.liTaskTextColor};
   }
 
   &:not(.removed), &:not(.removed), &:not(.removed) {
@@ -34,7 +35,7 @@ const LiComponent = styled.li `padding: 14px 0px;
 
     .task__text {
       text-decoration: line-through;
-      color: #ccc;
+      color: ${props => props.liTaskTextRemovedColor};
       font-weight: 100;
     }
   }
@@ -46,16 +47,32 @@ const LiComponent = styled.li `padding: 14px 0px;
     }
 
     .task__text {
-      color: #7d7d7d;
+      color: ${props => props.liTaskTextDoneColor};
       font-weight: 100;
     }
   }`
 
-const TaskElementComponent =(
-    {cssClass, el, changeTaskStatusDelete, changeTaskStatus}
-    ) =>{
-    return(
-        <LiComponent className={cssClass} key={el.id}>
+const TaskElementComponent = (
+    {
+        cssClass,
+        el,
+        changeTaskStatusDelete,
+        changeTaskStatus,
+
+        liBorderBottomColor,
+        liTaskTextColor,
+        liTaskTextRemovedColor,
+        liTaskTextDoneColor
+
+    }) => {
+    return (
+        <LiComponent
+            className={cssClass} key={el.id}
+            liBorderBottomColor={liBorderBottomColor}
+            liTaskTextColor={liTaskTextColor}
+            liTaskTextRemovedColor={liTaskTextRemovedColor}
+            liTaskTextDoneColor={liTaskTextDoneColor}
+        >
             <FontAwesomeIcon className={'fa'} icon={el.done ? faCheckSquare : faSquare}
                              onClick={() => changeTaskStatus(el)}/>
             <span className="task__text">{el.title}</span>

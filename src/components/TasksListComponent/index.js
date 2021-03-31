@@ -47,7 +47,13 @@ const TasksListComponent = (
         taskListHeight,
         tasks,
         changeTaskStatusDelete,
-        changeTaskStatus}
+        changeTaskStatus,
+
+            liBorderBottomColor,
+            liTaskTextColor,
+            liTaskTextRemovedColor,
+            liTaskTextDoneColor
+    }
         ) => (
     <TaskListWrapper className={(activeTab === nameTab) ? 'active' : ''}
                      taskListHeight={taskListHeight}>
@@ -62,6 +68,11 @@ const TasksListComponent = (
                         changeTaskStatus={changeTaskStatus}
                         el={el}
                         cssClass={cssClass}
+
+                        liBorderBottomColor={liBorderBottomColor}
+                        liTaskTextColor={liTaskTextColor}
+                        liTaskTextRemovedColor={liTaskTextRemovedColor}
+                        liTaskTextDoneColor={liTaskTextDoneColor}
                     />
                 )
             })

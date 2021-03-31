@@ -3,45 +3,70 @@ import styled from "styled-components";
 import HeaderComponent from "../HeaderComponent";
 import FooterComponent from "../FooterComponent";
 import ContentComponent from "../ContentComponent";
+import {faMoon, faSun} from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+import {themes} from "../../Themes";
 
 let initTasks = [];
 
-const Container = styled.div`
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    background: ${props => props.containerBgColor};
-   justify-content: center;
-    
+
+
+const ThemesButtonWrapper = styled.button`
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  background-color: ${props => props.themesButtonWrapperBgColor};
+  color: ${props => props.mainBorderColor};
+  border: 2px solid ${props => props.mainBorderColor};
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  background: ${props => props.containerBgColor};
+  background: ${props => props.containerBgGradientColor};
+  justify-content: center;
 
-const DiviceWrapper =styled.div`
+`;
+
+const DeviceWrapper = styled.div`
+  box-sizing: border-box;
+  height: 800px;
+  width: 375px;
+  overflow: hidden;
+  border-radius: 40px;
+  box-shadow: 2px 12px 20px 2px rgba(0, 0, 0, 0.25);
+  border: 4px solid ${props => props.deviceBorderColor};
+
+  .device {
     box-sizing: border-box;
-    height: 800px;
-    width: 375px;
-    overflow: hidden;
-    border-radius: 40px;
-    box-shadow: 2px 12px 20px 2px rgba(0, 0, 0, 0.25);
-    border: 4px solid ${props => props.deviceBorderColor};
-    .device{
-      //padding: 20px;
-      box-sizing: border-box;
-      height: 100%;
-      width: 100%;
-      background: ${props => props.deviceBgColor};
-      display: flex;
-      flex-direction: column;
-      /* overflow-y: scroll;*/
-      position: relative;
-    }
+    height: 100%;
+    width: 100%;
+    background: ${props => props.deviceBgColor};
+    display: flex;
+    flex-direction: column;
+    /* overflow-y: scroll;*/
+    position: relative;
+  }
 `;
 const Index = () => {
     const [newTask, setNewTask] = useState(''); //this.state = {value: ''};
     const [tasks, setTasks] = useState(initTasks);
     const [activeTab, setActiveTab] = useState('all');
     const [addFormOpen, setAddFormOpen] = useState(false);
+    const [isDarkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
@@ -90,16 +115,31 @@ const Index = () => {
             setAddFormOpen(false);
         }
     }
-
+    const selectedThemes = isDarkMode ? themes.dark : themes.light;
     return (
         <Container
-            containerBgColor='#eaeaea'>
-            <DiviceWrapper
-                deviceBorderColor='#fff'
-                deviceBgColor='#f3f3f3'
+            containerBgColor={selectedThemes.containerBgColor}
+            containerBgGradientColor={selectedThemes.containerBgGradientColor}
+        >
+            <DeviceWrapper
+                mainBorderColor={selectedThemes.mainBorderColor}
+                deviceBorderColor={selectedThemes.deviceBorderColor}
+                deviceBgColor={selectedThemes.deviceBgColor}
             >
                 <div className="device">
-                    <HeaderComponent/>
+                    <ThemesButtonWrapper
+                        onClick={() => setDarkMode(!isDarkMode)}
+                        themesButtonWrapperBgColor={selectedThemes.themesButtonWrapperBgColor}
+                        mainBorderColor={selectedThemes.mainBorderColor}
+                    >
+                        <FontAwesomeIcon
+                            className={'fa'} icon={isDarkMode ? faSun : faMoon}
+                        />
+                    </ThemesButtonWrapper>
+
+                    <HeaderComponent
+                        selectedThemes={selectedThemes}
+                    />
                     < ContentComponent
                         tasks={tasks}
                         setActiveTab={setActiveTab}
@@ -107,17 +147,32 @@ const Index = () => {
                         changeTaskStatusDelete={changeTaskStatusDelete}
                         activeTab={activeTab}
 
+                        tabWrapperBgColor={selectedThemes.tabWrapperBgColor}
+                        tabWrapperShadowColor={selectedThemes.tabWrapperShadowColor}
+
+                        liBorderBottomColor={selectedThemes.liBorderBottomColor}
+                        liTaskTextColor={selectedThemes.liTaskTextColor}
+                        liTaskTextRemovedColor={selectedThemes.liTaskTextRemovedColor}
+                        liTaskTextDoneColor={selectedThemes.liTaskTextDoneColor}
+
                     />
-                     <FooterComponent
-                            setAddFormOpen={setAddFormOpen}
-                            addFormOpen={addFormOpen}
-                            enterNewTask={enterNewTask}
-                            keyBoardHandler={keyBoardHandler}
-                            newTask={newTask}
-                        />
+                    <FooterComponent
+                        setAddFormOpen={setAddFormOpen}
+                        addFormOpen={addFormOpen}
+                        enterNewTask={enterNewTask}
+                        keyBoardHandler={keyBoardHandler}
+                        newTask={newTask}
+
+                        addButtonWrapperBgColor={selectedThemes.addButtonWrapperBgColor}
+                        hrBgColor={selectedThemes.hrBgColor}
+                        addTaskFormWrapperTextColor={selectedThemes.addTaskFormWrapperTextColor}
+                        addTaskFormWrapperBgColor={selectedThemes.addTaskFormWrapperBgColor}
+                        inputUnderLineColor={selectedThemes.inputUnderLineColor}
+                        taskFormShadowColor={selectedThemes.taskFormShadowColor}
+                    />
                 </div>
 
-            </DiviceWrapper>
+            </DeviceWrapper>
         </Container>
     )
         ;
