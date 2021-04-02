@@ -64,6 +64,7 @@ const TasksListComponent = (
 
                 return (
                     <TaskElementComponent
+                        key={el.id}
                         changeTaskStatusDelete={changeTaskStatusDelete}
                         changeTaskStatus={changeTaskStatus}
                         el={el}

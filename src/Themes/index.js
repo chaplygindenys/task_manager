@@ -7,6 +7,7 @@
         deviceBorderColor: '#fff',
         deviceBgColor: '#eaeaea',
 
+        mainTextColor:'#333',
         tabWrapperBgColor: '#fff',
         tabWrapperShadowColor: 'rgba(0, 0, 0, 0.125)',
 
@@ -16,8 +17,8 @@
         liTaskTextDoneColor: '#7d7d7d',
 
         addTaskFormWrapperTextColor:'#000',
-        addButtonWrapperBgColor: '#000',
-        hrBgColor: '#fff',
+        addButtonWrapperBgColor:'#000',
+        hrBgColor:'#fff',
         addTaskFormWrapperBgColor: '#fff',
         inputUnderLineColor: '#333',
         taskFormShadowColor: 'rgba(0, 0, 0, 0.125)',
@@ -32,8 +33,9 @@
         deviceBorderColor: '#000',
         deviceBgColor: '#363535',
 
+        mainTextColor:'#ccc',
         tabWrapperBgColor: '#363535',
-        tabWrapperShadowColor: 'rgba(0, 0, 0, 0.125)',
+        tabWrapperShadowColor: 'rgba(0, 0, 0, 0.6)',
 
         liBorderBottomColor: '#7d7d7d',
         liTaskTextColor: '#82ad91',
@@ -41,10 +43,10 @@
         liTaskTextDoneColor: '#7d7d7d',
 
         addTaskFormWrapperTextColor: '#82ad91',
-        addButtonWrapperBgColor: '#fff',
+        addButtonWrapperBgColor:'#fff',
         hrBgColor: '#363535',
         addTaskFormWrapperBgColor: '#363535',
         inputUnderLineColor: '#eee',
-        taskFormShadowColor: 'rgba(0, 0, 0, 0.125)',
+        taskFormShadowColor: 'rgba(0, 0, 0, 0.6)',
     }
 };

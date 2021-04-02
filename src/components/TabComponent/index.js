@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TasksListComponent from "../TasksListComponent";
-import TaskTabComponent from "../TaskTabComponent"
-import TaskElementComponent from "../TaskElementComponent";
+import TaskTabComponent from "../TaskTabComponent";
 
 const TabWrapper = styled.div`
     margin: 8px 0;
@@ -14,7 +13,7 @@ const TabWrapper = styled.div`
     padding: 10px 20px;
     box-sizing: border-box;
     background-color: ${props => props.tabWrapperBgColor};
-    box-shadow: 0px 2px 6px 0px ${props => props.tabWrapperShadowColor};
+    box-shadow: 0 2px 6px 0 ${props => props.tabWrapperShadowColor};
     cursor: pointer;
     transition: transform .3s;
     &.active{

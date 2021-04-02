@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckSquare, faSquare, faTrashAlt} from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
@@ -80,5 +81,22 @@ const TaskElementComponent = (
         </LiComponent>
     )
 };
+TaskElementComponent.prototype = {
+    cssClass: PropTypes.string.isRequired,
+    el: PropTypes.shape(
+        {
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            done: PropTypes.bool.isRequired,
+            delete: PropTypes.bool.isRequired
+        }).isRequired,
 
+    changeTaskStatusDelete: PropTypes.func.isRequired,
+    changeTaskStatus: PropTypes.func.isRequired,
+
+    liBorderBottomColor: PropTypes.string.isRequired,
+    liTaskTextColor: PropTypes.string.isRequired,
+    liTaskTextRemovedColor: PropTypes.string.isRequired,
+    liTaskTextDoneColor: PropTypes.string.isRequired,
+}
 export default TaskElementComponent;

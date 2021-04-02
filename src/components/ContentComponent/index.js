@@ -1,13 +1,11 @@
 import React from "react";
 import TabComponent from "../TabComponent";
 import styled from "styled-components";
-import TasksListComponent from "../TasksListComponent";
 
 const taskHeight = 50;
 const ContentWrapper = styled.div`
   padding: 0 20px;
   flex: 1;
-
 `;
 
 const ContentComponent = (

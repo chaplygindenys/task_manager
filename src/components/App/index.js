@@ -3,38 +3,19 @@ import styled from "styled-components";
 import HeaderComponent from "../HeaderComponent";
 import FooterComponent from "../FooterComponent";
 import ContentComponent from "../ContentComponent";
-import {faMoon, faSun} from "@fortawesome/free-regular-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
 import {themes} from "../../Themes";
+import {ThemesContext} from "../../Themes/ThemesContext"
+import {ChangeThemeButtonComponent} from "../ChangeThemeButtonComponent";
 
 let initTasks = [];
 
-
-
-const ThemesButtonWrapper = styled.button`
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  right: 16px;
-  top: 16px;
-  background-color: ${props => props.themesButtonWrapperBgColor};
-  color: ${props => props.mainBorderColor};
-  border: 2px solid ${props => props.mainBorderColor};
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-
-  &:focus {
-    outline: 0;
-  }
-`;
 
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
+  color: ${props => props.mainTextColor};
   background: ${props => props.containerBgColor};
   background: ${props => props.containerBgGradientColor};
   justify-content: center;
@@ -47,7 +28,7 @@ const DeviceWrapper = styled.div`
   width: 375px;
   overflow: hidden;
   border-radius: 40px;
-  box-shadow: 2px 12px 20px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 12px 20px 2px ${props => props.tabWrapperShadowColor};
   border: 4px solid ${props => props.deviceBorderColor};
 
   .device {
@@ -66,7 +47,7 @@ const Index = () => {
     const [tasks, setTasks] = useState(initTasks);
     const [activeTab, setActiveTab] = useState('all');
     const [addFormOpen, setAddFormOpen] = useState(false);
-    const [isDarkMode, setDarkMode] = useState(false);
+    const [isDarkMode, setDarkMode] = useState(true);
 
     useEffect(() => {
         setTimeout(() => {
@@ -117,63 +98,66 @@ const Index = () => {
     }
     const selectedThemes = isDarkMode ? themes.dark : themes.light;
     return (
-        <Container
-            containerBgColor={selectedThemes.containerBgColor}
-            containerBgGradientColor={selectedThemes.containerBgGradientColor}
-        >
-            <DeviceWrapper
-                mainBorderColor={selectedThemes.mainBorderColor}
-                deviceBorderColor={selectedThemes.deviceBorderColor}
-                deviceBgColor={selectedThemes.deviceBgColor}
+        <ThemesContext.Provider value={{
+            themes: selectedThemes,
+            isDarkMode,
+            toggleTheme: setDarkMode
+        }}>
+
+
+            <Container
+                mainTextColor={selectedThemes.mainTextColor}
+                containerBgColor={selectedThemes.containerBgColor}
+                containerBgGradientColor={selectedThemes.containerBgGradientColor}
             >
-                <div className="device">
-                    <ThemesButtonWrapper
-                        onClick={() => setDarkMode(!isDarkMode)}
-                        themesButtonWrapperBgColor={selectedThemes.themesButtonWrapperBgColor}
-                        mainBorderColor={selectedThemes.mainBorderColor}
-                    >
-                        <FontAwesomeIcon
-                            className={'fa'} icon={isDarkMode ? faSun : faMoon}
+                <ChangeThemeButtonComponent/>
+
+                <DeviceWrapper
+                    mainBorderColor={selectedThemes.mainBorderColor}
+                    deviceBorderColor={selectedThemes.deviceBorderColor}
+                    deviceBgColor={selectedThemes.deviceBgColor}
+                    tabWrapperShadowColor={selectedThemes.tabWrapperShadowColor}
+                >
+                    <div className="device">
+
+                        <HeaderComponent
+                            selectedThemes={selectedThemes}
                         />
-                    </ThemesButtonWrapper>
+                        < ContentComponent
+                            tasks={tasks}
+                            setActiveTab={setActiveTab}
+                            changeTaskStatus={changeTaskStatus}
+                            changeTaskStatusDelete={changeTaskStatusDelete}
+                            activeTab={activeTab}
 
-                    <HeaderComponent
-                        selectedThemes={selectedThemes}
-                    />
-                    < ContentComponent
-                        tasks={tasks}
-                        setActiveTab={setActiveTab}
-                        changeTaskStatus={changeTaskStatus}
-                        changeTaskStatusDelete={changeTaskStatusDelete}
-                        activeTab={activeTab}
+                            tabWrapperBgColor={selectedThemes.tabWrapperBgColor}
+                            tabWrapperShadowColor={selectedThemes.tabWrapperShadowColor}
 
-                        tabWrapperBgColor={selectedThemes.tabWrapperBgColor}
-                        tabWrapperShadowColor={selectedThemes.tabWrapperShadowColor}
+                            liBorderBottomColor={selectedThemes.liBorderBottomColor}
+                            liTaskTextColor={selectedThemes.liTaskTextColor}
+                            liTaskTextRemovedColor={selectedThemes.liTaskTextRemovedColor}
+                            liTaskTextDoneColor={selectedThemes.liTaskTextDoneColor}
 
-                        liBorderBottomColor={selectedThemes.liBorderBottomColor}
-                        liTaskTextColor={selectedThemes.liTaskTextColor}
-                        liTaskTextRemovedColor={selectedThemes.liTaskTextRemovedColor}
-                        liTaskTextDoneColor={selectedThemes.liTaskTextDoneColor}
+                        />
+                        <FooterComponent
+                            setAddFormOpen={setAddFormOpen}
+                            addFormOpen={addFormOpen}
+                            enterNewTask={enterNewTask}
+                            keyBoardHandler={keyBoardHandler}
+                            newTask={newTask}
 
-                    />
-                    <FooterComponent
-                        setAddFormOpen={setAddFormOpen}
-                        addFormOpen={addFormOpen}
-                        enterNewTask={enterNewTask}
-                        keyBoardHandler={keyBoardHandler}
-                        newTask={newTask}
+                            addButtonWrapperBgColor={selectedThemes.addButtonWrapperBgColor}
+                            hrBgColor={selectedThemes.hrBgColor}
+                            addTaskFormWrapperTextColor={selectedThemes.addTaskFormWrapperTextColor}
+                            addTaskFormWrapperBgColor={selectedThemes.addTaskFormWrapperBgColor}
+                            inputUnderLineColor={selectedThemes.inputUnderLineColor}
+                            taskFormShadowColor={selectedThemes.taskFormShadowColor}
+                        />
+                    </div>
 
-                        addButtonWrapperBgColor={selectedThemes.addButtonWrapperBgColor}
-                        hrBgColor={selectedThemes.hrBgColor}
-                        addTaskFormWrapperTextColor={selectedThemes.addTaskFormWrapperTextColor}
-                        addTaskFormWrapperBgColor={selectedThemes.addTaskFormWrapperBgColor}
-                        inputUnderLineColor={selectedThemes.inputUnderLineColor}
-                        taskFormShadowColor={selectedThemes.taskFormShadowColor}
-                    />
-                </div>
-
-            </DeviceWrapper>
-        </Container>
+                </DeviceWrapper>
+            </Container>
+        </ThemesContext.Provider>
     )
         ;
 }
