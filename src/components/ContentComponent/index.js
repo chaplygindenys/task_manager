@@ -2,6 +2,7 @@ import React from "react";
 import TabComponent from "../TabComponent";
 import styled from "styled-components";
 
+
 const taskHeight = 50;
 const ContentWrapper = styled.div`
   padding: 0 20px;
@@ -14,18 +15,14 @@ const ContentComponent = (
         setActiveTab,
         changeTaskStatus,
         changeTaskStatusDelete,
-        activeTab,
-        tabWrapperBgColor,
-        tabWrapperShadowColor,
 
-        liBorderBottomColor,
-        liTaskTextColor,
-        liTaskTextRemovedColor,
-        liTaskTextDoneColor
+        activeTab,
     }
 ) => {
+
     return (
-        <ContentWrapper>
+        <ContentWrapper
+        >
             <TabComponent
                 tasks={tasks}
                 setActiveTab={setActiveTab}
@@ -37,13 +34,6 @@ const ContentComponent = (
                 tabDescription='Here you are manage all tasks'
                 taskListHeight={tasks.length * taskHeight}
 
-                tabWrapperBgColor={tabWrapperBgColor}
-                tabWrapperShadowColor={tabWrapperShadowColor}
-
-                liBorderBottomColor={liBorderBottomColor}
-                liTaskTextColor={liTaskTextColor}
-                liTaskTextRemovedColor={liTaskTextRemovedColor}
-                liTaskTextDoneColor={liTaskTextDoneColor}
             />
 
 
@@ -58,13 +48,6 @@ const ContentComponent = (
                 tabDescription='Here you can manage tasks to be completed'
                 taskListHeight={tasks.filter(el => !el.done && !el.delete).length * taskHeight}
 
-                tabWrapperBgColor={tabWrapperBgColor}
-                tabWrapperShadowColor={tabWrapperShadowColor}
-
-                liBorderBottomColor={liBorderBottomColor}
-                liTaskTextColor={liTaskTextColor}
-                liTaskTextRemovedColor={liTaskTextRemovedColor}
-                liTaskTextDoneColor={liTaskTextDoneColor}
 
 
             />
@@ -81,13 +64,6 @@ const ContentComponent = (
                 tabDescription='Here you manage the tasks that you have already done'
                 taskListHeight={tasks.filter(el => el.done && !el.delete).length * taskHeight}
 
-                tabWrapperBgColor={tabWrapperBgColor}
-                tabWrapperShadowColor={tabWrapperShadowColor}
-
-                liBorderBottomColor={liBorderBottomColor}
-                liTaskTextColor={liTaskTextColor}
-                liTaskTextRemovedColor={liTaskTextRemovedColor}
-                liTaskTextDoneColor={liTaskTextDoneColor}
             />
 
 
@@ -102,13 +78,6 @@ const ContentComponent = (
                 tabDescription='Here you can see the tasks that you have been removed'
                 taskListHeight={tasks.filter(el => el.delete).length * taskHeight}
 
-                tabWrapperBgColor={tabWrapperBgColor}
-                tabWrapperShadowColor={tabWrapperShadowColor}
-
-                liBorderBottomColor={liBorderBottomColor}
-                liTaskTextColor={liTaskTextColor}
-                liTaskTextRemovedColor={liTaskTextRemovedColor}
-                liTaskTextDoneColor={liTaskTextDoneColor}
             />
         </ContentWrapper>
     )

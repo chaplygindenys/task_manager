@@ -48,11 +48,6 @@ const TasksListComponent = (
         tasks,
         changeTaskStatusDelete,
         changeTaskStatus,
-
-            liBorderBottomColor,
-            liTaskTextColor,
-            liTaskTextRemovedColor,
-            liTaskTextDoneColor
     }
         ) => (
     <TaskListWrapper className={(activeTab === nameTab) ? 'active' : ''}
@@ -69,11 +64,6 @@ const TasksListComponent = (
                         changeTaskStatus={changeTaskStatus}
                         el={el}
                         cssClass={cssClass}
-
-                        liBorderBottomColor={liBorderBottomColor}
-                        liTaskTextColor={liTaskTextColor}
-                        liTaskTextRemovedColor={liTaskTextRemovedColor}
-                        liTaskTextDoneColor={liTaskTextDoneColor}
                     />
                 )
             })

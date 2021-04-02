@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckSquare, faSquare, faTrashAlt} from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
+import {ThemesContext} from "../../Themes/ThemesContext";
 
 
 const LiComponent = styled.li`padding: 14px 0px;
@@ -14,12 +15,12 @@ const LiComponent = styled.li`padding: 14px 0px;
   }
 
   &:last-child {
-    padding-bottom: 0px;
+    padding-bottom: 0;
   }
 
   .task__text {
     flex: 1;
-    margin: 0px 4px;
+    margin: 0 4px;
     color: ${props => props.liTaskTextColor};
   }
 
@@ -60,19 +61,16 @@ const TaskElementComponent = (
         changeTaskStatusDelete,
         changeTaskStatus,
 
-        liBorderBottomColor,
-        liTaskTextColor,
-        liTaskTextRemovedColor,
-        liTaskTextDoneColor
-
     }) => {
+
+    const {themes} =useContext(ThemesContext);
     return (
         <LiComponent
             className={cssClass} key={el.id}
-            liBorderBottomColor={liBorderBottomColor}
-            liTaskTextColor={liTaskTextColor}
-            liTaskTextRemovedColor={liTaskTextRemovedColor}
-            liTaskTextDoneColor={liTaskTextDoneColor}
+            liBorderBottomColor={themes.liBorderBottomColor}
+            liTaskTextColor={themes.liTaskTextColor}
+            liTaskTextRemovedColor={themes.liTaskTextRemovedColor}
+            liTaskTextDoneColor={themes.liTaskTextDoneColor}
         >
             <FontAwesomeIcon className={'fa'} icon={el.done ? faCheckSquare : faSquare}
                              onClick={() => changeTaskStatus(el)}/>
@@ -94,9 +92,6 @@ TaskElementComponent.prototype = {
     changeTaskStatusDelete: PropTypes.func.isRequired,
     changeTaskStatus: PropTypes.func.isRequired,
 
-    liBorderBottomColor: PropTypes.string.isRequired,
-    liTaskTextColor: PropTypes.string.isRequired,
-    liTaskTextRemovedColor: PropTypes.string.isRequired,
-    liTaskTextDoneColor: PropTypes.string.isRequired,
+
 }
 export default TaskElementComponent;

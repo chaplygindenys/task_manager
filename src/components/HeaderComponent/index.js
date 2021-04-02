@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
+import {ThemesContext} from "../../Themes/ThemesContext";
 
 const HeaderWrapper = styled.div`
-    //padding-top: 30px;
-    //padding-bottom: 30px;
     padding: 30px 20px;
     position: relative;
     .iphone__x{
@@ -19,18 +18,18 @@ const HeaderWrapper = styled.div`
     }
 `;
 
-const HeaderComponent = ({selectedThemes}) => {
+const HeaderComponent = () => {
 
     const date = new Date();
     let days = ['Sun', 'Mon', 'Tus', 'Wen', 'Tht', 'Fry', 'Sat']
     let months = ['Jan', 'Fbr', 'Mar', 'Apr', 'May', 'Jn', 'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Des']
 
-
+    const {themes} =useContext(ThemesContext);
     return (
 
 
         <HeaderWrapper
-            deviceBorderColor={selectedThemes.deviceBorderColor}
+            deviceBorderColor={themes.deviceBorderColor}
         >
             <div className="iphone__x"></div>
             <h1>Hello, Denys</h1>

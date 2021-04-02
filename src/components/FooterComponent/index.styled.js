@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const FooterComponentStyled = styled.div`position: sticky;
+const FooterComponentStyled = styled.div`
+  position: sticky;
   bottom: 0;
   width: 100%;
 

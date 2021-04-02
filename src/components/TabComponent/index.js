@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
 import TasksListComponent from "../TasksListComponent";
 import TaskTabComponent from "../TaskTabComponent";
+import {ThemesContext} from "../../Themes/ThemesContext";
 
 const TabWrapper = styled.div`
     margin: 8px 0;
@@ -36,22 +37,22 @@ const TabComponent = (
         tabTitle,
         tabDescription,
         taskListHeight,
+        selectedThemes
 
-        tabWrapperBgColor,
-        tabWrapperShadowColor,
+    }) => {
 
-        liBorderBottomColor,
-        liTaskTextColor,
-        liTaskTextRemovedColor,
-        liTaskTextDoneColor
+    const {themes} =useContext(ThemesContext);
+        return(
 
-    }) => (
+
     <TabWrapper
+
+        tabWrapperShadowColor={themes.tabWrapperShadowColor}
+        tabWrapperBgColor={themes.tabWrapperBgColor}
         className={(activeTab === nameTab) ? 'active' : ''}
                 onClick={() => setActiveTab(nameTab)}
 
-                tabWrapperBgColor={tabWrapperBgColor}
-                tabWrapperShadowColor={tabWrapperShadowColor}
+
     >
         <TaskTabComponent
            tabTitle={tabTitle}
@@ -69,12 +70,9 @@ const TabComponent = (
             nameTab={nameTab}
             taskListHeight={taskListHeight}
 
-            liBorderBottomColor={liBorderBottomColor}
-            liTaskTextColor={liTaskTextColor}
-            liTaskTextRemovedColor={liTaskTextRemovedColor}
-            liTaskTextDoneColor={liTaskTextDoneColor}
 
         />
     </TabWrapper>
-);
+        )
+    };
 export default TabComponent;

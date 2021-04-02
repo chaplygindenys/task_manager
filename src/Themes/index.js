@@ -47,6 +47,6 @@
         hrBgColor: '#363535',
         addTaskFormWrapperBgColor: '#363535',
         inputUnderLineColor: '#eee',
-        taskFormShadowColor: 'rgba(0, 0, 0, 0.6)',
+        taskFormShadowColor: 'rgba(0, 0, 0, 0.6)'
     }
 };
