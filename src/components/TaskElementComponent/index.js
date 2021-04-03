@@ -6,7 +6,8 @@ import styled from "styled-components";
 import {ThemesContext} from "../../Themes/ThemesContext";
 
 
-const LiComponent = styled.li`padding: 14px 0px;
+const LiComponent = styled.li`
+  padding: 14px 0;
   display: flex;
   justify-content: space-around;
 
@@ -20,8 +21,7 @@ const LiComponent = styled.li`padding: 14px 0px;
 
   .task__text {
     flex: 1;
-    margin: 0 4px;
-    color: ${props => props.liTaskTextColor};
+    margin: 0 4px 0 8px;
   }
 
   &:not(.removed), &:not(.removed), &:not(.removed) {
@@ -68,7 +68,6 @@ const TaskElementComponent = (
         <LiComponent
             className={cssClass} key={el.id}
             liBorderBottomColor={themes.liBorderBottomColor}
-            liTaskTextColor={themes.liTaskTextColor}
             liTaskTextRemovedColor={themes.liTaskTextRemovedColor}
             liTaskTextDoneColor={themes.liTaskTextDoneColor}
         >

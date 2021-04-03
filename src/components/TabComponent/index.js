@@ -5,7 +5,7 @@ import TaskTabComponent from "../TaskTabComponent";
 import {ThemesContext} from "../../Themes/ThemesContext";
 
 const TabWrapper = styled.div`
-    margin: 8px 0;
+    margin: 16px 0;
     min-height: 90px;
     border-radius: 8px;
     display: flex;
@@ -13,7 +13,7 @@ const TabWrapper = styled.div`
     justify-content: center;
     padding: 10px 20px;
     box-sizing: border-box;
-    background-color: ${props => props.tabWrapperBgColor};
+    background-color: ${props => props.addButtonWrapperBgColor};
     box-shadow: 0 2px 6px 0 ${props => props.tabWrapperShadowColor};
     cursor: pointer;
     transition: transform .3s;
@@ -37,7 +37,6 @@ const TabComponent = (
         tabTitle,
         tabDescription,
         taskListHeight,
-        selectedThemes
 
     }) => {
 
@@ -48,7 +47,7 @@ const TabComponent = (
     <TabWrapper
 
         tabWrapperShadowColor={themes.tabWrapperShadowColor}
-        tabWrapperBgColor={themes.tabWrapperBgColor}
+        addButtonWrapperBgColor={themes.containerBgColor}
         className={(activeTab === nameTab) ? 'active' : ''}
                 onClick={() => setActiveTab(nameTab)}
 

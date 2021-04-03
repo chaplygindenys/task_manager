@@ -5,7 +5,7 @@
         mainBorderColor: '#fff',
         themesButtonWrapperBgColor: '#333',
         deviceBorderColor: '#fff',
-        deviceBgColor: '#eaeaea',
+        deviceBgColor: '#fff',
 
         mainTextColor:'#333',
         tabWrapperBgColor: '#fff',
@@ -31,13 +31,13 @@
         mainBorderColor: '#eee',
         themesButtonWrapperBgColor: '#ccc',
         deviceBorderColor: '#000',
-        deviceBgColor: '#363535',
+        deviceBgColor: '#333',
 
         mainTextColor:'#ccc',
         tabWrapperBgColor: '#363535',
         tabWrapperShadowColor: 'rgba(0, 0, 0, 0.6)',
 
-        liBorderBottomColor: '#7d7d7d',
+        liBorderBottomColor: 'rgba(232,232,232,0.5)',
         liTaskTextColor: '#82ad91',
         liTaskTextRemovedColor: '#7d7d7d',
         liTaskTextDoneColor: '#7d7d7d',

@@ -1,8 +1,7 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import HeaderComponent from "../../components/HeaderComponent";
 import ContentComponent from "../../components/ContentComponent";
 import FooterComponent from "../../components/FooterComponent";
-import {ThemesContext} from "../../Themes/ThemesContext";
 
 let initTasks = [];
 
@@ -62,15 +61,12 @@ const TaskPageComponent =()=>{
       }
    }
 
-   const themes = useContext(ThemesContext);
 
 
    return(
 
     <>
-       <HeaderComponent
-           selectedThemes={themes}
-       />
+       <HeaderComponent/>
 
        <ContentComponent
            tasks={tasks}
@@ -78,7 +74,6 @@ const TaskPageComponent =()=>{
            changeTaskStatus={changeTaskStatus}
            changeTaskStatusDelete={changeTaskStatusDelete}
            activeTab={activeTab}
-           selectedThemes={themes}
        />
        <FooterComponent
            setAddFormOpen={setAddFormOpen}

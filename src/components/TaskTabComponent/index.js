@@ -8,11 +8,12 @@ const TasksTabWrapper = styled.div`
     .title__wrapper{
       .title{
         font-weight: bold;
-        text-transform: uppercase;
+        font-size: 20px;
+        margin-bottom: 8px;
       }
       .description{
         font-weight: 100;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 `;

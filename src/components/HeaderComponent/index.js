@@ -3,19 +3,7 @@ import styled from "styled-components";
 import {ThemesContext} from "../../Themes/ThemesContext";
 
 const HeaderWrapper = styled.div`
-    padding: 30px 20px;
-    position: relative;
-    .iphone__x{
-      width: 146px;
-      height: 34px;
-      left: 50%;
-      transform: translate(-50%, -100%);
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-      background: ${props => props.deviceBorderColor};
-      top: 20px;
-      position: absolute;
-    }
+    padding: 30px 40px;
 `;
 
 const HeaderComponent = () => {
@@ -28,10 +16,8 @@ const HeaderComponent = () => {
     return (
 
 
-        <HeaderWrapper
-            deviceBorderColor={themes.deviceBorderColor}
-        >
-            <div className="iphone__x"></div>
+        <HeaderWrapper>
+
             <h1>Hello, Denys</h1>
             <div className="greeting">
                 {'Today, ' + days[date.getDay()] + ' ' + (date.getDate()) + ' ' + (months[date.getMonth()])}
