@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import styled from "styled-components";
 import TasksListComponent from "../TasksListComponent";
 import TaskTabComponent from "../TaskTabComponent";
-import {ThemesContext} from "../../Themes/ThemesContext";
+import {ThemesContext} from "../../store/ThemesContext";
 
 const TabWrapper = styled.div`
     margin: 16px 0;

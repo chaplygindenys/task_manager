@@ -1,8 +1,9 @@
 import React, {useContext} from "react";
 import styled from "styled-components";
 import {LoginPageComponent} from "../../pages/LoginPageComponent";
-import {ThemesContext} from "../../Themes/ThemesContext";
+import {ThemesContext} from "../../store/ThemesContext";
 import {TaskPageComponent} from "../../pages/TaskPageComponent";
+import {useUserContext} from "../../store/UserContext";
 
 const DeviceWrapper = styled.div`
   box-sizing: border-box;
@@ -32,12 +33,13 @@ const DeviceWrapper = styled.div`
     background: ${props => props.deviceBgColor};
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+   /* overflow-y: scroll;*/
     position: relative;
   }
 `;
 const DeviseComponent=()=>{
     const {themes} =useContext(ThemesContext);
+    const {isLogin} = useUserContext();
     return(
             <DeviceWrapper
                 mainBorderColor={themes.mainBorderColor}
@@ -47,8 +49,9 @@ const DeviseComponent=()=>{
             >
                 <div className="iphone__x"></div>
                 <div className="device">
-                    <TaskPageComponent/>
-                   {/* <LoginPageComponent/>*/}
+                    {
+                       isLogin?(<TaskPageComponent/>):(<LoginPageComponent/>)
+                    }
                 </div>
             </DeviceWrapper>
     )

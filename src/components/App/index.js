@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import {themes} from "../../Themes";
-import {ThemesContext} from "../../Themes/ThemesContext"
+import {ThemesContext} from "../../store/ThemesContext"
 import {ChangeThemeButtonComponent} from "../ChangeThemeButtonComponent";
 import {DeviseComponent} from "../DeviseComponent";
+import {UserContextProvider} from "../../store/UserContext";
 
 
 const Container = styled.div`
@@ -31,18 +32,16 @@ const Index = () => {
             isDarkMode,
             toggleTheme: setDarkMode
         }}>
-
-
-            <Container
-                mainTextColor={selectedThemes.mainTextColor}
-                containerBgColor={selectedThemes.containerBgColor}
-                containerBgGradientColor={selectedThemes.containerBgGradientColor}
-            >
-                <ChangeThemeButtonComponent/>
-
-              <DeviseComponent/>
-
-            </Container>
+            <UserContextProvider>
+                <Container
+                    mainTextColor={selectedThemes.mainTextColor}
+                    containerBgColor={selectedThemes.containerBgColor}
+                    containerBgGradientColor={selectedThemes.containerBgGradientColor}
+                >
+                    <ChangeThemeButtonComponent/>
+                    <DeviseComponent/>
+                </Container>
+            </UserContextProvider>
         </ThemesContext.Provider>
     )
         ;

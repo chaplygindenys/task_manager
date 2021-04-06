@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckSquare, faSquare, faTrashAlt} from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
-import {ThemesContext} from "../../Themes/ThemesContext";
+import {ThemesContext} from "../../store/ThemesContext";
 
 
 const LiComponent = styled.li`

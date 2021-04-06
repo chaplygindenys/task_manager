@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMoon, faSun} from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
-import {ThemesContext} from "../../Themes/ThemesContext";
+import {ThemesContext} from "../../store/ThemesContext";
 
 
 const ThemesButtonWrapper = styled.button`

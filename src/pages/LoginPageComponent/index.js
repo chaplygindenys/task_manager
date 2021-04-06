@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {ButtonComponent} from "../../components/ButtonComponent";
 import {InputComponent} from "../../components/InputComponent";
+import {LoginContextProvider} from "../../store/LoginContext";
 
 const ContentWrapper = styled.div`
   padding: 0 40px;
@@ -21,6 +22,7 @@ const LoginPageComponent = () => {
 
     return (
         <ContentWrapper>
+            <LoginContextProvider>
             <H1Wrapper>Login to Task Manager</H1Wrapper>
 
             <InputBlockWrapper>
@@ -39,8 +41,8 @@ const LoginPageComponent = () => {
                     name='password'
                 />
             </InputBlockWrapper>
-            <ButtonComponent>Login</ButtonComponent>
-
+            <ButtonComponent >Login</ButtonComponent>
+            </LoginContextProvider>
         </ContentWrapper>
 
     )
